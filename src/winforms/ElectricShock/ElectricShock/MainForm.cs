@@ -2,9 +2,9 @@
 
 namespace ElectricShock
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1(ViewModel viewModel)
+        public MainForm(ViewModel viewModel)
         {
             _viewModel = viewModel;
             InitializeComponent();
