@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ElectricShock
@@ -13,9 +11,11 @@ namespace ElectricShock
         [STAThread]
         static void Main()
         {
+            var viewModel = new ViewModel();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm(viewModel));
         }
     }
 }
