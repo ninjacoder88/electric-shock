@@ -17,7 +17,22 @@ namespace ElectricShock
 
         public void AddApplication()
         {
-            Applications.Add(new ApplicationModel {Name = ApplicationName, Path = ApplicationPath});
+            Applications.Add(new ApplicationModel {Name = ApplicationName, Path = ApplicationPath, Start = true});
+            ApplicationName = string.Empty;
+            ApplicationPath = string.Empty;
+        }
+
+        public void Save()
+        {
+            if (!Directory.Exists(@"C:\config"))
+            {
+                Directory.CreateDirectory(@"C:\config");
+            }
+
+            if (!File.Exists(_configurationFilePath))
+            {
+                File.WriteAllText(_configurationFilePath, "[]");
+            }
 
             var jsonObject = JsonConvert.SerializeObject(Applications);
 
@@ -30,12 +45,12 @@ namespace ElectricShock
         {
             if (!Directory.Exists(@"C:\config"))
             {
-                Directory.CreateDirectory(@"C:\config");
+                return;
             }
 
             if (!File.Exists(_configurationFilePath))
             {
-                File.WriteAllText(_configurationFilePath, "[]");
+                return;
             }
 
             string fileText = File.ReadAllText(_configurationFilePath);
