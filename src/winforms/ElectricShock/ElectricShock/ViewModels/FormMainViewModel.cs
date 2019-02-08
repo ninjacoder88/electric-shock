@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ElectricShock
 {
-    public class ViewModel
+    public class FormMainViewModel
     {
         public string ApplicationName { get; set; }
 

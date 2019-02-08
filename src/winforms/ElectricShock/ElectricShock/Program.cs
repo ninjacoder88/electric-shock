@@ -11,7 +11,7 @@ namespace ElectricShock
         [STAThread]
         static void Main()
         {
-            var viewModel = new ViewModel();
+            var viewModel = new FormMainViewModel();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
