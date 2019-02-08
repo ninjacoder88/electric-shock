@@ -24,6 +24,7 @@ namespace ElectricShock.AppForms
             {
                 dialog.Multiselect = false;
                 dialog.CheckFileExists = true;
+                dialog.ShowDialog();
                 _viewModel.ApplicationPath = dialog.FileName;
                 _viewModel.ApplicationName = dialog.SafeFileName;
             }
