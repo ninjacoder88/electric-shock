@@ -1,6 +1,6 @@
 ﻿namespace ElectricShock.AppForms
 {
-    partial class MainForm
+    partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -121,7 +121,7 @@
             this.button3.Text = "Move Down";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // MainForm
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +134,7 @@
             this.Controls.Add(this.btnStart);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainForm";
+            this.Name = "FormMain";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Electric Shock";
