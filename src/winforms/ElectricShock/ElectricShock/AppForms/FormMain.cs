@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using ElectricShock.Models;
 
 namespace ElectricShock.AppForms
 {
@@ -21,6 +22,27 @@ namespace ElectricShock.AppForms
             }
 
             _formMainViewModel.AddApplication(formAddViewModel.ApplicationName, formAddViewModel.ApplicationPath);
+        }
+
+        private void btnDelete_Click(object sender, System.EventArgs e)
+        {
+            var rows = dgvApplications.SelectedRows;
+
+            if (rows.Count != 1)
+            {
+                return;
+            }
+
+            var selectedRow = rows[0];
+
+            var model = selectedRow.DataBoundItem as ApplicationModel;
+
+            if (model == null)
+            {
+                return;
+            }
+
+            _formMainViewModel.Remove(model);
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)

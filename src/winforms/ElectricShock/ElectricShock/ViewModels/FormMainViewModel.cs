@@ -13,6 +13,16 @@ namespace ElectricShock
 
         public void AddApplication(string applicationName, string applicationPath)
         {
+            if (string.IsNullOrEmpty(applicationName))
+            {
+                return;
+            }
+
+            if (string.IsNullOrEmpty(applicationPath))
+            {
+                return;
+            }
+
             Applications.Add(new ApplicationModel {Name = applicationName, Path = applicationPath, Start = true});
         }
 
@@ -37,6 +47,11 @@ namespace ElectricShock
             {
                 Applications.Add(applicationModel);
             }
+        }
+
+        public void Remove(ApplicationModel model)
+        {
+            Applications.Remove(model);
         }
 
         public void Save()
