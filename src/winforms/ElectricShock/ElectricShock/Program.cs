@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using ElectricShock.AppForms;
 
 namespace ElectricShock
 {
@@ -15,7 +16,7 @@ namespace ElectricShock
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(viewModel));
+            Application.Run(new FormMain(viewModel));
         }
     }
 }
