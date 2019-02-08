@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ElectricShock
+namespace ElectricShock.AppForms
 {
     public partial class MainForm : Form
     {
