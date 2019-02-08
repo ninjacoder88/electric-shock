@@ -32,12 +32,12 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvApplications = new System.Windows.Forms.DataGridView();
+            this.applicationModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.isSelectedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.applicationModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvApplications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +80,10 @@
             this.dgvApplications.Size = new System.Drawing.Size(238, 324);
             this.dgvApplications.TabIndex = 8;
             // 
+            // applicationModelBindingSource
+            // 
+            this.applicationModelBindingSource.DataSource = typeof(ElectricShock.Models.ApplicationModel);
+            // 
             // btnDelete
             // 
             this.btnDelete.Location = new System.Drawing.Point(256, 62);
@@ -113,18 +117,16 @@
             // isSelectedDataGridViewCheckBoxColumn
             // 
             this.isSelectedDataGridViewCheckBoxColumn.DataPropertyName = "Start";
+            this.isSelectedDataGridViewCheckBoxColumn.FillWeight = 40.60914F;
             this.isSelectedDataGridViewCheckBoxColumn.HeaderText = "Start";
             this.isSelectedDataGridViewCheckBoxColumn.Name = "isSelectedDataGridViewCheckBoxColumn";
             // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.FillWeight = 159.3909F;
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // applicationModelBindingSource
-            // 
-            this.applicationModelBindingSource.DataSource = typeof(ElectricShock.Models.ApplicationModel);
             // 
             // FormMain
             // 
@@ -157,11 +159,11 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvApplications;
         private System.Windows.Forms.BindingSource applicationModelBindingSource;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn isSelectedDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn isSelectedDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
     }
 }
 
