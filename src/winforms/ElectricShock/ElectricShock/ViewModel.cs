@@ -9,27 +9,33 @@ namespace ElectricShock
 {
     public class ViewModel
     {
+        public string ApplicationName { get; set; }
+
+        public string ApplicationPath { get; set; }
+
         public BindingList<ApplicationModel> Applications => _applicationModels ?? (_applicationModels = new BindingList<ApplicationModel>());
 
-        public void AddApplication(string name, string path)
+        public void AddApplication()
         {
-            if (!File.Exists(_configurationFilePath))
-            {
-                File.Create(_configurationFilePath);
-            }
-
-            Applications.Add(new ApplicationModel {Name = name, Path = path});
+            Applications.Add(new ApplicationModel {Name = ApplicationName, Path = ApplicationPath});
 
             var jsonObject = JsonConvert.SerializeObject(Applications);
+
             File.Delete(_configurationFilePath);
+
             File.WriteAllText(_configurationFilePath, jsonObject);
         }
 
         public void LoadApplications()
         {
+            if (!Directory.Exists(@"C:\config"))
+            {
+                Directory.CreateDirectory(@"C:\config");
+            }
+
             if (!File.Exists(_configurationFilePath))
             {
-                return;
+                File.WriteAllText(_configurationFilePath, "[]");
             }
 
             string fileText = File.ReadAllText(_configurationFilePath);
