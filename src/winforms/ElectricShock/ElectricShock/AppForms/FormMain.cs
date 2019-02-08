@@ -10,19 +10,23 @@ namespace ElectricShock.AppForms
             InitializeComponent();
 
             dgvApplications.DataSource = _formMainViewModel.Applications;
-
-            tbxApplicationName.DataBindings.Add(nameof(tbxApplicationName.Text), _formMainViewModel, nameof(_formMainViewModel.ApplicationName));
-            tbxApplicationPath.DataBindings.Add(nameof(tbxApplicationPath.Text), _formMainViewModel, nameof(_formMainViewModel.ApplicationPath));
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)
         {
-            _formMainViewModel.AddApplication();
+            var formAddViewModel = new FormAddViewModel();
+            using (var form = new FormAdd(formAddViewModel))
+            {
+                form.ShowDialog();
+            }
+
+            _formMainViewModel.AddApplication(formAddViewModel.ApplicationName, formAddViewModel.ApplicationPath);
         }
 
         private void btnStart_Click(object sender, System.EventArgs e)
         {
             _formMainViewModel.Start();
+            Close();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)

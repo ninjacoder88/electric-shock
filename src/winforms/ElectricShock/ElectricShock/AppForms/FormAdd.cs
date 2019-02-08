@@ -1,30 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ElectricShock.AppForms
 {
     public partial class FormAdd : Form
     {
-        public FormAdd()
+        public FormAdd(FormAddViewModel viewModel)
         {
+            _viewModel = viewModel;
             InitializeComponent();
-        }
-
-        private void btnBrowse_Click(object sender, EventArgs e)
-        {
-
+            tbxApplicationName.DataBindings.Add(nameof(tbxApplicationName.Text), _viewModel, nameof(_viewModel.ApplicationName));
+            tbxApplicationPath.DataBindings.Add(nameof(tbxApplicationPath.Text), _viewModel, nameof(_viewModel.ApplicationPath));
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new OpenFileDialog())
+            {
+                dialog.Multiselect = false;
+                dialog.CheckFileExists = true;
+                _viewModel.ApplicationPath = dialog.FileName;
+                _viewModel.ApplicationName = dialog.SafeFileName;
+            }
+        }
+
+        private readonly FormAddViewModel _viewModel;
     }
 }
