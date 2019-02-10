@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using ElectricShock.Models;
 using Newtonsoft.Json;
 
@@ -75,7 +76,7 @@ namespace ElectricShock
 
         public void Start()
         {
-            foreach (var applicationModel in Applications)
+            foreach (var applicationModel in Applications.Where(x => x.Start))
             {
                 Process.Start(applicationModel.Path);
             }
