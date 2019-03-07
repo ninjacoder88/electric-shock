@@ -78,7 +78,14 @@ namespace ElectricShock
         {
             foreach (var applicationModel in Applications.Where(x => x.Start))
             {
-                Process.Start(applicationModel.Path);
+                if (!string.IsNullOrEmpty(applicationModel.Arguments))
+                {
+                    Process.Start(applicationModel.Path, applicationModel.Arguments);
+                }
+                else
+                {
+                    Process.Start(applicationModel.Path);
+                }
             }
         }
 
