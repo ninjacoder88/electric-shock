@@ -29,17 +29,19 @@ namespace ElectricShock
 
         public void LoadApplications()
         {
-            if (!Directory.Exists(@"C:\config"))
+            if (!Directory.Exists(_configurationDirectory))
             {
                 return;
             }
 
-            if (!File.Exists(_configurationFilePath))
+            string filePath = Path.Combine(_configurationDirectory, _configurationFileName);
+
+            if (!File.Exists(filePath))
             {
                 return;
             }
 
-            string fileText = File.ReadAllText(_configurationFilePath);
+            string fileText = File.ReadAllText(filePath);
             var list = JsonConvert.DeserializeObject<List<ApplicationModel>>(fileText);
 
             Applications.Clear();
@@ -57,21 +59,23 @@ namespace ElectricShock
 
         public void Save()
         {
-            if (!Directory.Exists(@"C:\config"))
+            if (!Directory.Exists(_configurationDirectory))
             {
-                Directory.CreateDirectory(@"C:\config");
+                Directory.CreateDirectory(_configurationDirectory);
             }
 
-            if (!File.Exists(_configurationFilePath))
+            string filePath = Path.Combine(_configurationDirectory, _configurationFileName);
+
+            if (!File.Exists(filePath))
             {
-                File.WriteAllText(_configurationFilePath, "[]");
+                File.WriteAllText(filePath, "[]");
             }
 
             var jsonObject = JsonConvert.SerializeObject(Applications);
 
-            File.Delete(_configurationFilePath);
+            File.Delete(filePath);
 
-            File.WriteAllText(_configurationFilePath, jsonObject);
+            File.WriteAllText(filePath, jsonObject);
         }
 
         public void Start()
@@ -90,6 +94,7 @@ namespace ElectricShock
         }
 
         private BindingList<ApplicationModel> _applicationModels;
-        private readonly string _configurationFilePath = @"C:\config\electric-shock.json";
+        private readonly string _configurationFileName = "electric-shock.json";
+        private readonly string _configurationDirectory = @"C:\computer\config";
     }
 }
