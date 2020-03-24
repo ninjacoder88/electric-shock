@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -95,6 +96,6 @@ namespace ElectricShock
 
         private BindingList<ApplicationModel> _applicationModels;
         private readonly string _configurationFileName = "electric-shock.json";
-        private readonly string _configurationDirectory = @"C:\computer\config";
+        private readonly string _configurationDirectory = ConfigurationManager.AppSettings["ConfigurationFile"];
     }
 }
